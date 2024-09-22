@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mostrar Imagem e Slider</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #333; /* Fundo preto */
+        color: #fff; /* Texto branco */
+      }
+      * {
+        font-family: "Poppins", system-ui;
+        margin: 10px;
+      }
+      h1 {
+        text-align: center;
+      }
+      .image-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+      }
+      img {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Meu mundo ❤️</h1>
+      <select id="imageSelector" class="form-control">
+        <option value="">Selecione uma opção</option>
+        <option value="mundo-1">144p</option>
+        <option value="mundo-2">360p</option>
+        <option value="mundo-3">720p</option>
+        <option value="mundo-4">1080p</option>
+      </select>
+
+      <div class="image-container" id="imageContainer"></div>
+
+      <div id="imageSlider" class="carousel slide mt-5" data-ride="carousel" style="display: none">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="slider-imagem1.jpeg" class="d-block w-100" alt="Imagem 1" />
+          </div>
+          <div class="carousel-item">
+            <img src="slider-imagem2.jpeg" class="d-block w-100" alt="Imagem 2" />
+          </div>
+          <div class="carousel-item">
+            <img src="slider-imagem3.jpeg" class="d-block w-100" alt="Imagem 3" />
+          </div>
+          <div class="carousel-item">
+            <img src="slider-imagem4.jpeg" class="d-block w-100" alt="Imagem 4" />
+          </div>
+          <div class="carousel-item">
+            <img src="slider-imagem5.jpeg" class="d-block w-100" alt="Imagem 5" />
+          </div>
+          <div class="carousel-item">
+            <img src="slider-imagem6.jpeg" class="d-block w-100" alt="Imagem 6" />
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#imageSlider" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#imageSlider" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Próximo</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      const imageSelector = document.getElementById("imageSelector");
+      const imageContainer = document.getElementById("imageContainer");
+      const imageSlider = document.getElementById("imageSlider");
+
+      imageSelector.addEventListener("change", function () {
+        const selectedValue = this.value;
+        imageContainer.innerHTML = ""; // Limpa a div antes de adicionar uma nova imagem
+        imageSlider.style.display = "none"; // Esconde o slider inicialmente
+
+        if (selectedValue) {
+          if (selectedValue === "mundo-4") {
+            imageSlider.style.display = "block"; // Mostra o slider se a última opção for escolhida
+          } else {
+            imageContainer.innerHTML = `<img src="${selectedValue}.png" alt="${selectedValue}">`;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
